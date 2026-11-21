@@ -1,0 +1,23 @@
+[package]
+name = "audio_engine_v10"
+version = "10.0.0"
+edition = "2021"
+authors = ["Shay Kadosh"]
+description = "Audio Engine V10 — Pure 32-Bit Float (F32LE) Audiophile DSP Engine for Android & Dart FFI"
+
+[lib]
+name = "audio_engine_v10"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+libc = "0.2"
+ringbuf = "0.4"
+rustfft = "6.2"
+symphonia = { version = "0.5", features = ["all"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"
